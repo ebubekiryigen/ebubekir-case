@@ -1,0 +1,25 @@
+
+form{
+    flex-direction: column;
+    gap: 0.625rem;
+    width: 25rem;
+    .form-control{
+        flex-direction: column;
+        gap: 0.625rem;
+        input{
+            padding: 0.625rem;
+        }
+        span{
+            color: #ff4f4f;
+        }
+    }
+    button{
+        padding: 0.625rem;
+        background: transparent;
+        transition: all 0.5s;
+    }
+    button:hover{
+        background: #7373e3;
+        color: #fff;
+    }
+}
