@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# Projede kullanılan paketler:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Form kontrolü için react hook form paketini kullandım.
+Url den utm bilgilerini almak için react router dom paketini kullandım.
+Uluslar arası telefon numarası için react intel tel input paketini kullandım.
+Uluslar arası telefon numarası kontrolü için libphonenumber-js paketini kullandım.
 
-## Available Scripts
+# Case için senaryo
 
-In the project directory, you can run:
+Facebook üzerinden oluşturulan bir reklam çalışması için utm linki oluşturuldu kullanıcı linke tıklayarak sisteme kayıt olması için forma yönlendiriliyor kayıt olduktan sonra black friday sale kampanyasına katılmış oluyor.
 
-### `npm start`
+# Case kod ilerleyişi
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Kullanıcı linke tıkladığında useEffect ile kullanıcı sayfaya ilk defa giriş yaptığında utm_source, utm_medium ve utm_term parametrelerinin olup olmadığını kontrol ediyor eğer var ise formu gösteriyor eğer yok ise hata mesajı gösteriyor. Eğer kullanıcı linke tıkladığında utm bilgileri ile geldiyse ancak daha sonra url kısmından herhangi bir utm bilgisini sildiğinde tekrar hata mesajını gösteriyor buradaki amaç utm bilgisinin art niyetli değiştirilmesi ya da bilinçsizlik durumunda sistemin yanıltılmaması. Url doğru bir şekilde geliyorsa utm bilgileri localstorage kaydediliyor. daha sonra form üzerinde react hook form paketi ile mail ve kullanıcı adı doğruluğu kontrol ediliyor. Telefon için ise libphonenumber paketi ile birlikte kontrol işlemi gerçekleştiriliyor. Kayıt olduktan sonra kayıt bilgileri sessionStorage kaydediliyor ve teşekkür sayfasına yönlendiriliyor ve sayfada kullanıcın kayıt bilgileri ve utm bilgileri ile bir yazı yer alıyor. kullanıcı eğer form sayfasına gelmeden direk confirm sayfasına gitmek ister ise sistem localStorage utm bilgileri ve sessionStorage user bilgilerin olup olmadığını kontrol ediyor eğer yok ise hata mesajı verdiriyor.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Not
 
-### `npm test`
+Teşekkürler sayfasına giderken url de utm bilgilerinin yer alıp almıyacağı konusunda emin olamadım bu yüzden utm bilgilerini url de yer aldırtmadım ve localStorageden çekdim eğer aldırmam gerekiyorsada navigate işlemi sırasında;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+navigate('/confirmation') kodu yerine
+navigate('/confirmation?utm_source=facebook&utm_medium=cpc&utm_term=black+friday+sale') şeklinde yönlendirilip teşekkürler sayfasında react router dom paketi ile url deki parametreleri yakalyıp bu şekilde de işlem yapabilirdim.
