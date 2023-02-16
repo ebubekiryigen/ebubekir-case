@@ -19,9 +19,6 @@ function Home() {
             localStorage.setItem('utm',JSON.stringify(utm))
             setValidate(true)
             setLoader(false)
-        } else if(localStorage.getItem('utm')) {
-            setValidate(true)
-            setLoader(false)
         } else if(!utm_source || !utm_medium || !utm_term) {
             setLoader(false)
         }
