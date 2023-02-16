@@ -19,7 +19,7 @@ function Confirmation() {
     },[user,utm])
     return(
         <>
-        <section className='container display-f center-f height-v'>
+        <section className='display-f center-f height-v'>
             {loader && 'Yükleniyor...'}
             {validate && !loader && <Success utm={utm} user={user} />}
             {!validate && !loader && <Unsuccess />}

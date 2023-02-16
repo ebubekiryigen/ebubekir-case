@@ -1,3 +1,12 @@
+
+@media only screen and (max-width: 600px) {
+	.thank-you {
+		width: 22.5rem!important;
+	}
+    h1{
+        font-size: 2rem!important;
+    }
+}
 section{
     flex-direction: column;
     gap: 5rem;
